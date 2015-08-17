@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean)*>
+        <!ELEMENT bean (property|EMPTY)*>
+        <!ATTLIST bean property CDATA #IMPLIED>
+        <!ATTLIST bean id CDATA #IMPLIED>
+        <!ATTLIST bean class CDATA #REQUIRED>
+        <!ATTLIST bean name CDATA #IMPLIED>
+        <!ATTLIST property name CDATA #REQUIRED>
+        <!ATTLIST property value CDATA #IMPLIED>
+        <!ELEMENT property (#PCDATA|list)*>
+        <!ELEMENT list (#PCDATA|ref)*>
+        <!ELEMENT ref (#PCDATA)>
+        <!ATTLIST ref bean CDATA #REQUIRED>
+]>
+<beans>
+    <bean id="interceptor1" class="interceptors.Xxx"></bean>
+    <bean id="interceptor2" class="interceptors.Xxx"></bean>
+    <bean name="/loging" class="xxxController"></bean>
+
+    <bean class="cn.johnyu.mymvc.framework.BeanNameUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="interceptor1"/>
+                <ref bean="interceptor2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="cn.johnyu.mymvc.framework.SimpleControllerHandlerAdapter"></bean>
+
+    <bean id="viewResolver" class="cn.johnyu.mymvc.framework.InternalResourceViewResolver">
+        <property name="prefix" value="/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    <bean name="/test" class="controllers.Xxxx"></bean>
+</beans>

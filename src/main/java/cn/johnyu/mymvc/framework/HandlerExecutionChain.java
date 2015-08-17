@@ -4,31 +4,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class HandlerExecutionChain {
-	private  Object handler;
-	private HandlerInterceptor[] interceptors;
-	
-	
-	boolean applyPreHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		return false;
-	}
+    private Object handler;
+    private HandlerInterceptor[] interceptors;
 
-	/**
-	 * Apply postHandle methods of registered interceptors.
-	 */
-	void applyPostHandle(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception {
-		
-	}
 
-	/**
-	 * Trigger afterCompletion callbacks on the mapped HandlerInterceptors.
-	 * Will just invoke afterCompletion for all interceptors whose preHandle invocation
-	 * has successfully completed and returned true.
-	 */
-	void triggerAfterCompletion(HttpServletRequest request, HttpServletResponse response, Exception ex)
-			throws Exception {
+    boolean applyPreHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	}
+        return false;
+    }
+
+    /**
+     * Apply postHandle methods of registered interceptors.
+     */
+    void applyPostHandle(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception {
+
+    }
+
+    /**
+     * Trigger afterCompletion callbacks on the mapped HandlerInterceptors.
+     * Will just invoke afterCompletion for all interceptors whose preHandle invocation
+     * has successfully completed and returned true.
+     */
+    void triggerAfterCompletion(HttpServletRequest request, HttpServletResponse response, Exception ex)
+            throws Exception {
+
+    }
+
+    /**
+     * Return the handler object to execute.
+     * @return the handler object
+     */
+    public Object getHandler() {
+        return this.handler;
+    }
+
+
 }
 
 
